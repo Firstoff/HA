@@ -1,0 +1,20 @@
+witch:
+
+  - platform: localtuya
+    bla-bla-bla
+
+switch:
+# цепляем 4-канальное реле с прошивкой тасмота 6.5.0
+  - platform: mqtt
+    unique_id: sonoff_relay_light
+    name: "sonoff_relay_light"
+    state_topic: "sonoff4/stat/RESULT"  
+    value_template: "{{ value_json.POWER2 }}"
+    command_topic: "sonoff4/cmnd/POWER2"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "sonoff4/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
